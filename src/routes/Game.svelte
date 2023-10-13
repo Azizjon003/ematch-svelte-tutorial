@@ -2,6 +2,7 @@
   import { createEventDispatcher, onMount } from "svelte";
   import Countdown from "./Countdown.svelte";
   import Found from "./Found.svelte";
+  import { confetti } from "@neoconfetti/svelte";
   import Grid from "./Grid.svelte";
   import { levels } from "./levels";
   import type { Level } from "./levels";
