@@ -44,6 +44,7 @@
       }}
       selected={a === i || b === i}
       found={found.includes(emoji)}
+      group={grid.indexOf(emoji) === i ? "a" : "b"}
     />
   {/each}
 </div>
@@ -55,5 +56,6 @@
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 0.5em;
     height: 100%;
+    perspective: 100vw;
   }
 </style>
