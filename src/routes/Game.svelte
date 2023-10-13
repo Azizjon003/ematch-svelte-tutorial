@@ -1,34 +1,40 @@
 <script lang="ts">
   import Grid from "./Grid.svelte";
-  import {levels } from "./levels";
-  import type{ Level} from "./levels"
-  const level = levels[0]
-  let size:number = level.size;
-  let grid:string[] =create_grid(level)
-  let found:string[] =[]
+  import { levels } from "./levels";
+  import type { Level } from "./levels";
+  import { shuffle } from "./utiils";
+  const level = levels[0];
+  let size: number = level.size;
+  let grid: string[] = create_grid(level);
+  let found: string[] = [];
 
-  function create_grid (level:Level){
-   
-    const copy  = level.emojis.slice()
-    console.log(copy)
-    const pairs:string[] = []  
+  function create_grid(level: Level) {
+    const copy = level.emojis.slice();
+    console.log(copy);
+    const pairs: string[] = [];
 
-    for(let i =0;i<size**2/2;i++){
-      const index = Math.floor(Math.random() * copy.length)
-      const emoji = copy[index]
-      copy.splice(index,1)
-      pairs.push(emoji) 
+    for (let i = 0; i < size ** 2 / 2; i++) {
+      const index = Math.floor(Math.random() * copy.length);
+      const emoji = copy[index];
+      copy.splice(index, 1);
+      pairs.push(emoji);
     }
 
-    pairs.push(...pairs)
-    return pairs
+    pairs.push(...pairs);
+    return shuffle(pairs);
   }
 </script>
-<div class="game">
 
+<div class="game">
   <div class="info" />
-  <div class="grid-container" >
-  <Grid  {grid} />
+  <div class="grid-container">
+    <Grid
+      {grid}
+      on:found={(e) => {
+        found = [...found, e.detail.emoji];
+      }}
+      {found}
+    />
   </div>
 
   <div class="info" />
@@ -43,7 +49,7 @@
     height: 100%;
     font-size: min(10vmin, 0.3em);
   }
-  .info{
+  .info {
     width: 80vmin;
     height: 10vmin;
     background-color: purple;

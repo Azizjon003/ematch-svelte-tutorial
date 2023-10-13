@@ -1,8 +1,12 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import Squere from "./Squere.svelte";
-  export let grid: string[];
 
-  let a: number = -1;
+  const dispatch = createEventDispatcher();
+  export let grid: string[];
+  export let found: string[];
+  export let a: number = -1;
+
   let b: number = -1;
   let reset_timeout: number;
 </script>
@@ -18,8 +22,15 @@
         } else if (b === -1) {
           b = i;
           if (grid[a] === grid[b]) {
-            a = -1;
-            b = -1;
+            // a = -1;
+            // b = -1;
+            dispatch("found", {
+              emoji,
+            });
+            reset_timeout = setTimeout(() => {
+              a = -1;
+              b = -1;
+            }, 1000);
           } else {
             reset_timeout = setTimeout(() => {
               a = -1;
@@ -32,6 +43,7 @@
         }
       }}
       selected={a === i || b === i}
+      found={found.includes(emoji)}
     />
   {/each}
 </div>
