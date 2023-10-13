@@ -4,31 +4,50 @@
   import Modal from "./Modal.svelte";
   import { levels } from "./levels";
 
-  let store: "waiting" | "playing" | "paused" | "won" | "lost" = "waiting";
+  let state: "waiting" | "playing" | "paused" | "won" | "lost" = "waiting";
+  let game: Game;
 </script>
 
-<Game />
+<Game
+  bind:this={game}
+  on:play={() => {
+    state = "playing";
+  }}
+  on:lose={() => {
+    state = "lost";
+  }}
+  on:win={() => {
+    state = "won";
+  }}
+  on:pause={() => {
+    state = "paused";
+  }}
+/>
 
-{#if store !== "playing"}
+{#if state !== "playing"}
   <Modal>
     <header>
       <h1>e<span>match</span>i</h1>
       <p>the emoji matching game</p>
     </header>
-    {#if store === "won" || store === "lost"}
-      <p>you {store} the game</p>
-    {:else if store === "paused"}
+    {#if state === "won" || state === "lost"}
+      <p>you {state} the game</p>
+    {:else if state === "paused"}
       <p>game paused</p>
-    {:else if store === "waiting"}
+    {:else if state === "waiting"}
       <p>choose a level</p>
     {/if}
     <div class="buttons">
-      {#if store === "paused"}
+      {#if state === "paused"}
         <button>resume</button>
         <button>quit</button>
       {:else}
         {#each levels as level}
-          <button>{level.label}</button>
+          <button
+            on:click={() => {
+              game.start(level);
+            }}>{level.label}</button
+          >
         {/each}
       {/if}
     </div>
