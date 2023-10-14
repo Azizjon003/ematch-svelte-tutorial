@@ -20,7 +20,7 @@
     size = level.size;
     grid = create_grid(level);
     remaining = duration = level.duration;
-
+    found = [];
     resume();
   }
 
