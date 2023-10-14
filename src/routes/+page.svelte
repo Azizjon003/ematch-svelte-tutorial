@@ -44,8 +44,18 @@
     {/if}
     <div class="buttons">
       {#if state === "paused"}
-        <button>resume</button>
-        <button>quit</button>
+        <button
+          on:click={() => {
+            game.resume();
+            state = "playing";
+          }}>resume</button
+        >
+        <button
+          on:click={() => {
+            game.quit();
+            state = "lost";
+          }}>quit</button
+        >
       {:else}
         {#each levels as level}
           <button
@@ -61,13 +71,23 @@
 
 <style>
   h1 {
-    font-size: 4em;
+    font-size: 8em;
+    margin: 0;
   }
   h1 span {
-    color: purple;
+    color: #a424ff;
+  }
+  header {
+    text-align: center;
+  }
+  header p {
+    font-size: 2em;
+    margin: 0;
   }
   p {
     font-family: Grandstander;
+    margin: 2rem;
+    text-align: center;
   }
   .confetti {
     position: fixed;
@@ -75,5 +95,21 @@
     top: 50%;
     width: 100%;
     height: 100%;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+  }
+
+  button {
+    font-family: Grandstander;
+    font-size: 1em;
+    padding: 1em 1em;
+    border: none;
+    border-radius: 0.5em;
+    background-color: #a424ff;
+    color: white;
+    cursor: pointer;
   }
 </style>

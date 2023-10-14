@@ -38,26 +38,28 @@
     height: 100%;
     backface-visibility: hidden;
     border: 0;
-    border-radius: 1em;
+    border-radius: 15%;
     font-size: inherit;
+    background-color: var(--bg-3);
   }
 
   .background {
     position: absolute;
-    background: white;
-    border: 0.5em solid #eee;
+    background: var(--bg-1);
+    border: 0.5em solid var(--purple);
     transform: rotateY(180deg);
     backface-visibility: hidden;
-    border-radius: 1em;
+    border-radius: 10%;
     width: 100%;
     height: 100%;
   }
 
   img {
-    width: 6em;
-    height: 6em;
+    width: 8em;
+    height: 8em;
     pointer-events: none;
     transform: rotateY(180deg);
     backface-visibility: hidden;
+    background: --bg-3;
   }
 </style>

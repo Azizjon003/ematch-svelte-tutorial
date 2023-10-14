@@ -8,6 +8,7 @@
     width: 100%;
     height: 100%;
     backdrop-filter: blur(10px);
+    color: #eee;
     display: grid;
     place-items: center;
     z-index: 999;

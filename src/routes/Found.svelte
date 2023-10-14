@@ -32,8 +32,8 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    gap: 0.5em;
-    filter: drop-shadow(0.2em 0.2em 0.5em rgba(0, 0, 0, 0.2));
+    gap: 2em;
+    /* filter: drop-shadow(0.2em 0.2em 0.5em rgba(0, 0, 0, 0.2)); */
   }
   .pair {
     display: flex;
@@ -41,13 +41,13 @@
     justify-content: center;
     height: 6em;
     width: 6em;
-    background: white;
+    background: var(--bg-2);
     padding: 1em;
     border-radius: 50%;
   }
   img {
     position: absolute;
-    width: 2em;
-    height: 2em;
+    width: 8em;
+    height: 8em;
   }
 </style>

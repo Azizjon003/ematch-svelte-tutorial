@@ -24,10 +24,15 @@
     resume();
   }
 
-  function resume() {
+  export function resume() {
     playing = true;
     countdown();
     dispatch("play");
+  }
+
+  export function quit() {
+    playing = false;
+    dispatch("quit");
   }
   function create_grid(level: Level) {
     const copy = level.emojis.slice();
@@ -100,9 +105,11 @@
 <style>
   .game {
     display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #111;
     height: 100%;
     font-size: min(10vmin, 0.3em);
   }
