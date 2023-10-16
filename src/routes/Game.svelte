@@ -68,7 +68,7 @@
     loop();
   }
 
-  onMount(countdown);
+  // onMount(countdown);
 </script>
 
 <div class="game" style="--size:{size}">

@@ -74,6 +74,13 @@
     font-size: 8em;
     margin: 0;
   }
+
+  @media screen and (max-width: 576px) {
+    h1 {
+      font-size: 5em;
+      margin: 0;
+    }
+  }
   h1 span {
     color: #a424ff;
   }
